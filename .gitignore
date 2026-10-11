@@ -1,0 +1,11 @@
+bin/
+obj/
+publish/
+.vs/
+.vscode/
+*.user
+*.suo
+TestResults/
+.env
+Thumbs.db
+Desktop.ini
