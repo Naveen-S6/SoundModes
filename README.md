@@ -101,11 +101,11 @@ or fork the repo and raise a **Pull Request**. See [CONTRIBUTING.md](CONTRIBUTIN
 ## License and terms
 
 SoundModes is free and open source under the [MIT License](LICENSE). Using it means you accept the
-[Terms of Use](TERMS.md): it comes as is, with no warranty, and you're responsible for safe listening levels.
-Bundled components are listed in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+[Terms of Use](docs/TERMS.md): it comes as is, with no warranty, and you're responsible for safe listening levels.
+Bundled components are listed in [THIRD-PARTY-NOTICES.md](docs/THIRD-PARTY-NOTICES.md).
 SoundModes is not affiliated with Equalizer APO or any audio brand.
 
 ---
 
 Built with C# / .NET 8 (WPF), using Equalizer APO for the sound processing and NAudio for volume control.
-Building, testing and technical details: [DEVELOPMENT.md](DEVELOPMENT.md).
+Building, testing and technical details: [DEVELOPMENT.md](docs/DEVELOPMENT.md).

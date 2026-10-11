@@ -4,7 +4,7 @@ By downloading, installing or using SoundModes, you agree to these terms. If you
 
 ## 1. Free, open-source software
 
-SoundModes is free and open source under the [MIT License](LICENSE). You may use, copy, change and share it,
+SoundModes is free and open source under the [MIT License](../LICENSE). You may use, copy, change and share it,
 including for commercial purposes, as long as the license notice stays with it.
 
 ## 2. Provided "as is"
@@ -33,7 +33,7 @@ SoundModes changes only what's needed to work:
 - If you turn on **Start with Windows**, it adds a startup entry for your user account.
 - If you click **Grant permission**, it gives standard Windows users write access to Equalizer APO's config folder.
 
-To undo everything, follow **Uninstall** in the [README](README.md).
+To undo everything, follow **Uninstall** in the [README](../README.md).
 
 ## 5. Third-party software
 

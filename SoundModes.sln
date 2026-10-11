@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundModes", "SoundModes\SoundModes.csproj", "{D40A0B07-AA93-4E1F-8059-F620F098FD11}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundModes", "src\SoundModes\SoundModes.csproj", "{D40A0B07-AA93-4E1F-8059-F620F098FD11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundModes.Tests", "SoundModes.Tests\SoundModes.Tests.csproj", "{87605682-BCDE-4A9A-A068-46EC219594FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundModes.Tests", "tests\SoundModes.Tests\SoundModes.Tests.csproj", "{87605682-BCDE-4A9A-A068-46EC219594FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

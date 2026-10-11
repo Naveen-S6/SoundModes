@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <Using Include="Xunit" />
-    <ProjectReference Include="..\SoundModes\SoundModes.csproj" />
+    <ProjectReference Include="..\..\src\SoundModes\SoundModes.csproj" />
   </ItemGroup>
 
 </Project>

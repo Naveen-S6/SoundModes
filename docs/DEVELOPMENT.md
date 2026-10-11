@@ -1,7 +1,7 @@
 # SoundModes: developer notes
 
-For building, testing and maintaining SoundModes. The user guide is [README.md](README.md).
-Spec: [SoundModes_PRD.md](SoundModes_PRD.md). Progress: [task.md](task.md). History: [CHANGELOG.md](CHANGELOG.md).
+For building, testing and maintaining SoundModes. The user guide is [README.md](../README.md).
+Spec: [SoundModes_PRD.md](planning/SoundModes_PRD.md). Progress: [task.md](planning/task.md). History: [CHANGELOG.md](../CHANGELOG.md).
 
 How it works: SoundModes does not process audio itself. It writes Equalizer APO's `config.txt`, and Equalizer APO applies the change live.
 
@@ -16,14 +16,14 @@ No environment variables or secrets are needed, so there is no `.env` file.
 
 ```powershell
 dotnet restore           # packages come from nuget.org via ./nuget.config
-dotnet run --project SoundModes
+dotnet run --project src/SoundModes
 dotnet test
 ```
 
 ## Publish (single portable exe)
 
 ```powershell
-dotnet publish SoundModes -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish
+dotnet publish src/SoundModes -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish
 ```
 
 Output: `publish\SoundModes.exe` (~155 MB, no .NET install needed). Copy it anywhere and run it.
@@ -54,25 +54,37 @@ The Equalizer APO folder comes from `HKLM\SOFTWARE\EqualizerAPO\ConfigPath`, fal
 | Warning that hotkeys are in use | Another app owns that Ctrl+Alt combo; use the tray instead (rebinding is planned) |
 | Something else | Check `%APPDATA%\SoundModes\log.txt` |
 
-## Architecture
+## Repository layout
 
 ```
-SoundModes/
-  App.xaml.cs                     controller: single instance, wiring, mode switching, error handlers,
-                                  elevated --grant-permission helper mode
-  Strings.cs                      all user-facing text
-  Models/SoundMode.cs             presets (as EqSettings) + Custom
-  Models/EqSettings.cs            a mode's sound in slider terms -> filters + auto preamp + config text
-  Models/Settings.cs              settings.json load/save (last mode, Custom), name -> mode
-  Services/EqualizerApoService.cs locate config, status check, atomic write, backup, permission grant
-  Services/VolumeService.cs       NAudio Core Audio master volume, follows default-device changes
-  Services/HotkeyService.cs       RegisterHotKey on a message-only window
-  Services/Autostart.cs           HKCU Run key
-  Services/Log.cs                 file logger + %APPDATA% path
-  Tray/TrayIcon.cs                WinForms NotifyIcon + context menu, icons drawn at runtime
-  Tray/TrayPopup.xaml             left-click panel (follows Windows light/dark)
-  Tray/Toast.xaml                 click-through "Meeting mode ON" indicator
-SoundModes.Tests/                 xUnit: preset rendering, preamp headroom, atomic write/backup, settings
+README.md, LICENSE, CHANGELOG.md, CONTRIBUTING.md   top level, where GitHub looks for them
+SoundModes.sln, nuget.config                        open the .sln in Visual Studio / Rider / VS Code
+.github/pull_request_template.md                    filled into every new PR
+
+src/SoundModes/                       the app
+  App.xaml.cs                         controller: single instance, wiring, mode switching, error handlers,
+                                      elevated --grant-permission helper mode
+  Strings.cs                          all user-facing text
+  Models/SoundMode.cs                 presets (as EqSettings) + Custom
+  Models/EqSettings.cs                a mode's sound in slider terms -> filters + auto preamp + config text
+  Models/Settings.cs                  settings.json load/save (last mode, Custom, Boost), name -> mode
+  Services/EqualizerApoService.cs     locate config, status check, atomic write, backup, permission grant
+  Services/VolumeService.cs           NAudio Core Audio master volume, follows default-device changes
+  Services/HotkeyService.cs           RegisterHotKey on a message-only window
+  Services/Autostart.cs               HKCU Run key
+  Services/Log.cs                     file logger + %APPDATA% path
+  Tray/TrayIcon.cs                    WinForms NotifyIcon + context menu, icons drawn at runtime
+  Tray/TrayPopup.xaml                 left-click panel (follows Windows light/dark)
+  Tray/Toast.xaml                     click-through "Meeting mode ON" indicator
+
+tests/SoundModes.Tests/               xUnit: preset rendering, preamp/boost, atomic write/backup, settings
+
+docs/
+  DEVELOPMENT.md                      this file
+  TERMS.md, THIRD-PARTY-NOTICES.md    terms of use, bundled-component licenses
+  planning/                           original PRD and build task list (historical)
+
+publish/                              build output from dotnet publish (git-ignored)
 ```
 
 Flow: tray click / hotkey → `App.ApplyMode` → `EqualizerApoService.CheckStatus` → `Apply` (backup once, temp write, replace)

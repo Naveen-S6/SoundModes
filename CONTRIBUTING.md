@@ -16,7 +16,7 @@ approach before you spend time on code. For bugs, include:
 1. **Fork** this repository and clone your fork.
 2. Create a branch from `main`, named for what it does:
    `feature/short-name`, `fix/short-name`, `docs/short-name` or `chore/short-name`.
-3. Set up and build: see [DEVELOPMENT.md](DEVELOPMENT.md). You need Windows and the .NET 8 SDK.
+3. Set up and build: see [DEVELOPMENT.md](docs/DEVELOPMENT.md). You need Windows and the .NET 8 SDK.
 4. Make your change, and keep it focused on one thing.
 5. Check it:
    - `dotnet build` has no warnings
@@ -35,7 +35,7 @@ All PRs are reviewed before merging. Small PRs get reviewed fastest.
 
 - Match the style of the surrounding code; keep functions short and names clear.
 - Every function gets a short comment saying what it does.
-- User-facing text goes in `SoundModes/Strings.cs`, not inline in code or XAML.
+- User-facing text goes in `src/SoundModes/Strings.cs`, not inline in code or XAML.
 - No new dependencies unless they're clearly worth it. Explain why in the PR.
 - No network calls, telemetry or data collection. SoundModes is offline by design.
 - Keep it light: check memory use stays around 25–30 MB in Task Manager.

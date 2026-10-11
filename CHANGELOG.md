@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-11: Repository reorganized
+
+### Changed
+- App moved to `src/SoundModes/`, tests to `tests/SoundModes.Tests/`, and docs to `docs/` (DEVELOPMENT, TERMS, THIRD-PARTY-NOTICES), with the PRD and task list in `docs/planning/`. README, LICENSE, CHANGELOG and CONTRIBUTING stay at the top level, where GitHub detects them.
+- Solution, project reference, document links and build commands updated. Build commands now use `src/SoundModes`, e.g. `dotnet run --project src/SoundModes`.
+
 ## 2026-10-11: Open-source release prep
 
 ### Added
